@@ -1,9 +1,9 @@
 import io
 import logging
 import mimetypes
-import random
 
 from PIL import Image, UnidentifiedImageError
+import secrets
 
 
 def rerender_and_randomize_image_data(file_object, mime_type):
@@ -27,12 +27,12 @@ def rerender_and_randomize_image_data(file_object, mime_type):
         pixels = sanitized_image.load()
 
         for i in range(sanitized_image.size[0]):
-            if i % random.randrange(1, 10) == 0:
+            if i % secrets.SystemRandom().randrange(1, 10) == 0:
                 for j in range(sanitized_image.size[1]):
-                    if i * j % random.randrange(1, 10) == 0:
+                    if i * j % secrets.SystemRandom().randrange(1, 10) == 0:
                         pixel_list = list(pixels[i, j])
                         for k in range(len(pixel_list)):
-                            noise_offset = random.randrange(2)
+                            noise_offset = secrets.SystemRandom().randrange(2)
                             pixel_list[k] += (
                                 -1 * noise_offset
                                 if pixel_list[k] == 255
