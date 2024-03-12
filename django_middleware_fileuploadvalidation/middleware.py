@@ -120,8 +120,7 @@ class FileUploadValidationMiddleware(MiddlewareMixin):
         else:
             response = self.__scall__(request)
 
-        handler = getattr(request, "file_upload_handler", None)
-        if handler:
+        if handler := getattr(request, "file_upload_handler", None):
             response = handler.monitor_response(response)
         else:
             logging.debug("[Middleware][CALL] - No handler in response detected.")

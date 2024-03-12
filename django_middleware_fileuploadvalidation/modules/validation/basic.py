@@ -290,13 +290,12 @@ def check_filename_for_null_byte_injections(file):
 
     for file_name_split in file.detection_results.filename_splits:
         print(f"%00 in file_name_split: {'%00' in file_name_split}")
-        null_byte_found_in_split = (
+
+        if null_byte_found_in_split := (
             "0x00" in file_name_split
             or "%00" in file_name_split
             or "\0" in file_name_split
-        )
-
-        if null_byte_found_in_split:
+        ):
             null_byte_found = True
             break
 
