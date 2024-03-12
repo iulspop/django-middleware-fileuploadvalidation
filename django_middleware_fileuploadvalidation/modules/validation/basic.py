@@ -77,7 +77,7 @@ def check_file_size_allowed(file, upload_config):
     file.validation_results.file_size_ok = file_size_ok
 
     if not file_size_ok:
-        logging.warning(f"[Validation module] - File size is too big.")
+        logging.warning("[Validation module] - File size is too big.")
 
     return file
 
@@ -101,7 +101,7 @@ def check_request_header_mime(file, upload_config):
     file.validation_results.request_whitelist_ok = mime_whitelist_result
 
     if not mime_whitelist_result:
-        logging.warning(f"[Validation module] - Content-Type not whitelisted")
+        logging.warning("[Validation module] - Content-Type not whitelisted")
 
     return file
 
@@ -201,7 +201,7 @@ def check_signature_and_request_mime_match_file_extensions(file):
     file.attack_results.mime_manipulation = not all_extensions_match
 
     if not all_extensions_match:
-        logging.warning(f"[Validation module] - Extension MIME does not match")
+        logging.warning("[Validation module] - Extension MIME does not match")
 
     return file
 
@@ -218,7 +218,7 @@ def check_file_signature(file, upload_config):
     file.validation_results.signature_whitelist_ok = mime_whitelist_result
 
     if not mime_whitelist_result:
-        logging.warning(f"[Validation module] - Signature not whitelisted")
+        logging.warning("[Validation module] - Signature not whitelisted")
 
     return file
 
@@ -238,7 +238,7 @@ def check_filename_length(file, upload_config):
     file.validation_results.filename_length_ok = length_ok
 
     if not length_ok:
-        logging.warning(f"[Validation module] - Filename length too long")
+        logging.warning("[Validation module] - Filename length too long")
 
     return file
 
@@ -260,7 +260,7 @@ def check_filename_extensions(file, upload_config):
 
     file.validation_results.extensions_whitelist_ok = all_extensions_whitelisted
     if not all_extensions_whitelisted:
-        logging.warning(f"[Validation module] - Extension not whitelisted")
+        logging.warning("[Validation module] - Extension not whitelisted")
 
     # TODO: Add detection of alternate media file extensions such as .php5
 
@@ -302,7 +302,7 @@ def check_filename_for_null_byte_injections(file):
 
     file.attack_results.null_byte_injection = null_byte_found
     if null_byte_found:
-        logging.warning(f"[Validation module] - Null byte injection found")
+        logging.warning("[Validation module] - Null byte injection found")
 
     return file
 
