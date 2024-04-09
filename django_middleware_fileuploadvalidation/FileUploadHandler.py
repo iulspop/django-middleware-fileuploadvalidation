@@ -190,9 +190,7 @@ class FileUploadHandler:
 
         if processing_step == "COMPLETE":
             logging.info(
-                "[Middleware] - TOTAL execution time: %s sec"
-                % (round(execution_until_now / 1000, 3))
-            )
+                "[Middleware] - TOTAL execution time: %s sec", (round(execution_until_now / 1000, 3)))
         else:
             logging.info(
                 f"[Middleware] - {processing_step} took {round(execution_last_step, 3)} ms - Total: {round(execution_until_now / 1000, 3)} sec"
